@@ -1,8 +1,14 @@
 C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\src\main\java\com\nttdata\accountBank\AccountBankApplication.java
 C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ApiUtil.java
-C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\V1Api.java
-C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\V1ApiController.java
-C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\V1ApiDelegate.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ClientsApi.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ClientsApiController.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ClientsApiDelegate.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ProductsApi.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ProductsApiController.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\ProductsApiDelegate.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\TransactionsApi.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\TransactionsApiController.java
+C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\api\TransactionsApiDelegate.java
 C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\model\ClientRequest.java
 C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\model\ClientResponse.java
 C:\Users\acasgara\OneDrive - NTT DATA EMEAL\Documents\Proy\BootCamps\S1\account_bank\target\generated-sources\openapi\src\main\java\com\nttdata\accountBank\model\ErrorResponse.java

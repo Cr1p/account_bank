@@ -8,7 +8,7 @@ servers:
     description: Local server
 
 paths:
-  /v1/clients:
+  /clients:
     get:
       summary: Get all clients
       operationId: getAllClients
@@ -50,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /v1/clients/{id}:
+  /clients/{id}:
     get:
       summary: Get a client by ID
       operationId: getClientById
@@ -120,7 +120,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /v1/products:
+  /products:
     get:
       summary: Get all financial products
       operationId: getAllFinancialProducts
@@ -162,7 +162,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /v1/products/{id}:
+  /products/{id}:
     get:
       summary: Get a financial product by ID
       operationId: getFinancialProductById
@@ -232,7 +232,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /v1/transactions:
+  /transactions:
     get:
       summary: Get all transactions
       operationId: getAllTransactions
