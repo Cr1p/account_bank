@@ -1,0 +1,392 @@
+openapi: 3.0.3
+info:
+  title: Bank System
+  description: Manage clients, financial products and transactions.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8085
+    description: Local server
+
+paths:
+  /v1/clients:
+    get:
+      summary: Get all clients
+      operationId: getAllClients
+      responses:
+        '200':
+          description: List of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new client
+      operationId: createClient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientRequest'
+      responses:
+        '201':
+          description: Client created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/clients/{id}:
+    get:
+      summary: Get a client by ID
+      operationId: getClientById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Client found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+        '404':
+          description: Client not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a client by ID
+      operationId: updateClient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientRequest'
+      responses:
+        '200':
+          description: Client updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a client by ID
+      operationId: deleteClient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Client deleted
+        '404':
+          description: Client not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/products:
+    get:
+      summary: Get all financial products
+      operationId: getAllFinancialProducts
+      responses:
+        '200':
+          description: List of financial products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FinancialProductResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new financial product
+      operationId: createFinancialProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialProductRequest'
+      responses:
+        '201':
+          description: Financial product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialProductResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/products/{id}:
+    get:
+      summary: Get a financial product by ID
+      operationId: getFinancialProductById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Financial product found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialProductResponse'
+        '404':
+          description: Financial product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a financial product by ID
+      operationId: updateFinancialProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinancialProductRequest'
+      responses:
+        '200':
+          description: Financial product updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialProductResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a financial product by ID
+      operationId: deleteFinancialProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Financial product deleted
+        '404':
+          description: Financial product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /v1/transactions:
+    get:
+      summary: Get all transactions
+      operationId: getAllTransactions
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new transaction
+      operationId: createTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        '201':
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ClientRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        type:
+          type: string
+          enum: [personal, business]
+      required:
+        - name
+        - email
+        - type
+
+    ClientResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        type:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    FinancialProductRequest:
+      type: object
+      properties:
+        clientId:
+          type: string
+        type:
+          type: string
+          enum: [account, credit, credit_card]
+        subtype:
+          type: string
+          enum: [savings, checking, fixed-term, personal, business]
+        balance:
+          type: number
+        creditLimit:
+          type: number
+        fees:
+          type: number
+      required:
+        - clientId
+        - type
+        - balance
+
+    FinancialProductResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        clientId:
+          type: string
+        type:
+          type: string
+        subtype:
+          type: string
+        balance:
+          type: number
+        creditLimit:
+          type: number
+        fees:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+
+    TransactionRequest:
+      type: object
+      properties:
+        productId:
+          type: string
+        type:
+          type: string
+          enum: [deposit, withdrawal, payment, purchase]
+        amount:
+          type: number
+        description:
+          type: string
+
+    TransactionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        productId:
+          type: string
+        type:
+          type: string
+        amount:
+          type: number
+        date:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string

@@ -1,0 +1,11 @@
+src/main/java/com/nttdata/accountBank/api/ApiUtil.java
+src/main/java/com/nttdata/accountBank/api/V1Api.java
+src/main/java/com/nttdata/accountBank/api/V1ApiController.java
+src/main/java/com/nttdata/accountBank/api/V1ApiDelegate.java
+src/main/java/com/nttdata/accountBank/model/ClientRequest.java
+src/main/java/com/nttdata/accountBank/model/ClientResponse.java
+src/main/java/com/nttdata/accountBank/model/ErrorResponse.java
+src/main/java/com/nttdata/accountBank/model/FinancialProductRequest.java
+src/main/java/com/nttdata/accountBank/model/FinancialProductResponse.java
+src/main/java/com/nttdata/accountBank/model/TransactionRequest.java
+src/main/java/com/nttdata/accountBank/model/TransactionResponse.java
