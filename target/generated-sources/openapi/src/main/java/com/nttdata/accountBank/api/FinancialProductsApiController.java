@@ -6,16 +6,16 @@ import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 @Controller
 @RequestMapping("${openapi.financialSystem.base-path:}")
-public class TransactionsApiController implements TransactionsApi {
+public class FinancialProductsApiController implements FinancialProductsApi {
 
-    private final TransactionsApiDelegate delegate;
+    private final FinancialProductsApiDelegate delegate;
 
-    public TransactionsApiController(@org.springframework.beans.factory.annotation.Autowired(required = false) TransactionsApiDelegate delegate) {
-        this.delegate = Optional.ofNullable(delegate).orElse(new TransactionsApiDelegate() {});
+    public FinancialProductsApiController(@org.springframework.beans.factory.annotation.Autowired(required = false) FinancialProductsApiDelegate delegate) {
+        this.delegate = Optional.ofNullable(delegate).orElse(new FinancialProductsApiDelegate() {});
     }
 
     @Override
-    public TransactionsApiDelegate getDelegate() {
+    public FinancialProductsApiDelegate getDelegate() {
         return delegate;
     }
 

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * TransactionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public class TransactionRequest   {
   @JsonProperty("productId")
   private String productId;
@@ -64,8 +65,52 @@ public class TransactionRequest   {
   @JsonProperty("amount")
   private BigDecimal amount;
 
+  @JsonProperty("transactionDate")
+  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
+  private OffsetDateTime transactionDate;
+
   @JsonProperty("description")
-  private String description;
+  private JsonNullable<String> description = JsonNullable.undefined();
+
+  /**
+   * Gets or Sets status
+   */
+  public enum StatusEnum {
+    COMPLETED("completed"),
+    
+    PENDING("pending"),
+    
+    FAILED("failed");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("status")
+  private StatusEnum status;
 
   public TransactionRequest productId(String productId) {
     this.productId = productId;
@@ -76,7 +121,8 @@ public class TransactionRequest   {
    * Get productId
    * @return productId
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
 
   public String getProductId() {
@@ -96,7 +142,8 @@ public class TransactionRequest   {
    * Get type
    * @return type
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
 
   public TypeEnum getType() {
@@ -116,7 +163,8 @@ public class TransactionRequest   {
    * Get amount
    * @return amount
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
   @Valid
 
@@ -128,8 +176,30 @@ public class TransactionRequest   {
     this.amount = amount;
   }
 
+  public TransactionRequest transactionDate(OffsetDateTime transactionDate) {
+    this.transactionDate = transactionDate;
+    return this;
+  }
+
+  /**
+   * Get transactionDate
+   * @return transactionDate
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public OffsetDateTime getTransactionDate() {
+    return transactionDate;
+  }
+
+  public void setTransactionDate(OffsetDateTime transactionDate) {
+    this.transactionDate = transactionDate;
+  }
+
   public TransactionRequest description(String description) {
-    this.description = description;
+    this.description = JsonNullable.of(description);
     return this;
   }
 
@@ -140,12 +210,33 @@ public class TransactionRequest   {
   @ApiModelProperty(value = "")
 
 
-  public String getDescription() {
+  public JsonNullable<String> getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(JsonNullable<String> description) {
     this.description = description;
+  }
+
+  public TransactionRequest status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -161,12 +252,14 @@ public class TransactionRequest   {
     return Objects.equals(this.productId, transactionRequest.productId) &&
         Objects.equals(this.type, transactionRequest.type) &&
         Objects.equals(this.amount, transactionRequest.amount) &&
-        Objects.equals(this.description, transactionRequest.description);
+        Objects.equals(this.transactionDate, transactionRequest.transactionDate) &&
+        Objects.equals(this.description, transactionRequest.description) &&
+        Objects.equals(this.status, transactionRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productId, type, amount, description);
+    return Objects.hash(productId, type, amount, transactionDate, description, status);
   }
 
   @Override
@@ -177,7 +270,9 @@ public class TransactionRequest   {
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

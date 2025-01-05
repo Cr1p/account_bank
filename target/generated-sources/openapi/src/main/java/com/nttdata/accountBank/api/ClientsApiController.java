@@ -3,9 +3,9 @@ package com.nttdata.accountBank.api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 @Controller
-@RequestMapping("${openapi.bankSystem.base-path:}")
+@RequestMapping("${openapi.financialSystem.base-path:}")
 public class ClientsApiController implements ClientsApi {
 
     private final ClientsApiDelegate delegate;

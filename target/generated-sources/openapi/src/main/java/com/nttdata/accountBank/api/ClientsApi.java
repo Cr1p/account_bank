@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 @Validated
 @Api(value = "clients", description = "the clients API")
 public interface ClientsApi {
@@ -35,7 +35,7 @@ public interface ClientsApi {
      * @return Client created (status code 201)
      *         or Invalid request (status code 400)
      */
-    @ApiOperation(value = "Create a new client", nickname = "createClient", notes = "", response = ClientResponse.class, tags={  })
+    @ApiOperation(value = "Create a new client", nickname = "createClient", notes = "", response = ClientResponse.class, tags={ "Client", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Client created", response = ClientResponse.class),
         @ApiResponse(code = 400, message = "Invalid request", response = ErrorResponse.class) })
@@ -56,7 +56,7 @@ public interface ClientsApi {
      * @return Client deleted (status code 204)
      *         or Client not found (status code 404)
      */
-    @ApiOperation(value = "Delete a client by ID", nickname = "deleteClient", notes = "", tags={  })
+    @ApiOperation(value = "Delete a client by ID", nickname = "deleteClient", notes = "", tags={ "Client", })
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "Client deleted"),
         @ApiResponse(code = 404, message = "Client not found", response = ErrorResponse.class) })
@@ -75,7 +75,7 @@ public interface ClientsApi {
      * @return List of clients (status code 200)
      *         or Internal server error (status code 500)
      */
-    @ApiOperation(value = "Get all clients", nickname = "getAllClients", notes = "", response = ClientResponse.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "Get all clients", nickname = "getAllClients", notes = "", response = ClientResponse.class, responseContainer = "List", tags={ "Client", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "List of clients", response = ClientResponse.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
@@ -95,7 +95,7 @@ public interface ClientsApi {
      * @return Client found (status code 200)
      *         or Client not found (status code 404)
      */
-    @ApiOperation(value = "Get a client by ID", nickname = "getClientById", notes = "", response = ClientResponse.class, tags={  })
+    @ApiOperation(value = "Get a client by ID", nickname = "getClientById", notes = "", response = ClientResponse.class, tags={ "Client", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Client found", response = ClientResponse.class),
         @ApiResponse(code = 404, message = "Client not found", response = ErrorResponse.class) })
@@ -116,7 +116,7 @@ public interface ClientsApi {
      * @return Client updated (status code 200)
      *         or Invalid request (status code 400)
      */
-    @ApiOperation(value = "Update a client by ID", nickname = "updateClient", notes = "", response = ClientResponse.class, tags={  })
+    @ApiOperation(value = "Update a client by ID", nickname = "updateClient", notes = "", response = ClientResponse.class, tags={ "Client", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Client updated", response = ClientResponse.class),
         @ApiResponse(code = 400, message = "Invalid request", response = ErrorResponse.class) })

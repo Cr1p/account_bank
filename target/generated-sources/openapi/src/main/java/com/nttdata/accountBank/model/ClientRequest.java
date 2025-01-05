@@ -13,28 +13,25 @@ import javax.validation.constraints.*;
 /**
  * ClientRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public class ClientRequest   {
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("documentType")
+  private String documentType;
 
-  @JsonProperty("email")
-  private String email;
-
-  @JsonProperty("phone")
-  private String phone;
+  @JsonProperty("documentNumber")
+  private String documentNumber;
 
   /**
-   * Gets or Sets type
+   * Gets or Sets clientType
    */
-  public enum TypeEnum {
+  public enum ClientTypeEnum {
     PERSONAL("personal"),
     
     BUSINESS("business");
 
     private String value;
 
-    TypeEnum(String value) {
+    ClientTypeEnum(String value) {
       this.value = value;
     }
 
@@ -49,8 +46,8 @@ public class ClientRequest   {
     }
 
     @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
+    public static ClientTypeEnum fromValue(String value) {
+      for (ClientTypeEnum b : ClientTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -59,8 +56,83 @@ public class ClientRequest   {
     }
   }
 
-  @JsonProperty("type")
-  private TypeEnum type;
+  @JsonProperty("clientType")
+  private ClientTypeEnum clientType;
+
+  @JsonProperty("name")
+  private String name;
+
+  @JsonProperty("email")
+  private String email;
+
+  @JsonProperty("address")
+  private String address;
+
+  @JsonProperty("phoneNumber")
+  private String phoneNumber;
+
+  public ClientRequest documentType(String documentType) {
+    this.documentType = documentType;
+    return this;
+  }
+
+  /**
+   * Get documentType
+   * @return documentType
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getDocumentType() {
+    return documentType;
+  }
+
+  public void setDocumentType(String documentType) {
+    this.documentType = documentType;
+  }
+
+  public ClientRequest documentNumber(String documentNumber) {
+    this.documentNumber = documentNumber;
+    return this;
+  }
+
+  /**
+   * Get documentNumber
+   * @return documentNumber
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getDocumentNumber() {
+    return documentNumber;
+  }
+
+  public void setDocumentNumber(String documentNumber) {
+    this.documentNumber = documentNumber;
+  }
+
+  public ClientRequest clientType(ClientTypeEnum clientType) {
+    this.clientType = clientType;
+    return this;
+  }
+
+  /**
+   * Get clientType
+   * @return clientType
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public ClientTypeEnum getClientType() {
+    return clientType;
+  }
+
+  public void setClientType(ClientTypeEnum clientType) {
+    this.clientType = clientType;
+  }
 
   public ClientRequest name(String name) {
     this.name = name;
@@ -104,45 +176,44 @@ public class ClientRequest   {
     this.email = email;
   }
 
-  public ClientRequest phone(String phone) {
-    this.phone = phone;
+  public ClientRequest address(String address) {
+    this.address = address;
     return this;
   }
 
   /**
-   * Get phone
-   * @return phone
+   * Get address
+   * @return address
   */
   @ApiModelProperty(value = "")
 
 
-  public String getPhone() {
-    return phone;
+  public String getAddress() {
+    return address;
   }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
-  public ClientRequest type(TypeEnum type) {
-    this.type = type;
+  public ClientRequest phoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
     return this;
   }
 
   /**
-   * Get type
-   * @return type
+   * Get phoneNumber
+   * @return phoneNumber
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
 
 
-  public TypeEnum getType() {
-    return type;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
 
@@ -155,15 +226,18 @@ public class ClientRequest   {
       return false;
     }
     ClientRequest clientRequest = (ClientRequest) o;
-    return Objects.equals(this.name, clientRequest.name) &&
+    return Objects.equals(this.documentType, clientRequest.documentType) &&
+        Objects.equals(this.documentNumber, clientRequest.documentNumber) &&
+        Objects.equals(this.clientType, clientRequest.clientType) &&
+        Objects.equals(this.name, clientRequest.name) &&
         Objects.equals(this.email, clientRequest.email) &&
-        Objects.equals(this.phone, clientRequest.phone) &&
-        Objects.equals(this.type, clientRequest.type);
+        Objects.equals(this.address, clientRequest.address) &&
+        Objects.equals(this.phoneNumber, clientRequest.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, email, phone, type);
+    return Objects.hash(documentType, documentNumber, clientType, name, email, address, phoneNumber);
   }
 
   @Override
@@ -171,10 +245,13 @@ public class ClientRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClientRequest {\n");
     
+    sb.append("    documentType: ").append(toIndentedString(documentType)).append("\n");
+    sb.append("    documentNumber: ").append(toIndentedString(documentNumber)).append("\n");
+    sb.append("    clientType: ").append(toIndentedString(clientType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }

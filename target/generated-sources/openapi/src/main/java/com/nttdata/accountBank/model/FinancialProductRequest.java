@@ -3,10 +3,11 @@ package com.nttdata.accountBank.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,103 +15,75 @@ import javax.validation.constraints.*;
 /**
  * FinancialProductRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public class FinancialProductRequest   {
+  @JsonProperty("productType")
+  private String productType;
+
+  @JsonProperty("subType")
+  private String subType;
+
   @JsonProperty("clientId")
   private String clientId;
-
-  /**
-   * Gets or Sets type
-   */
-  public enum TypeEnum {
-    ACCOUNT("account"),
-    
-    CREDIT("credit"),
-    
-    CREDIT_CARD("credit_card");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  @JsonProperty("type")
-  private TypeEnum type;
-
-  /**
-   * Gets or Sets subtype
-   */
-  public enum SubtypeEnum {
-    SAVINGS("savings"),
-    
-    CHECKING("checking"),
-    
-    FIXED_TERM("fixed-term"),
-    
-    PERSONAL("personal"),
-    
-    BUSINESS("business");
-
-    private String value;
-
-    SubtypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SubtypeEnum fromValue(String value) {
-      for (SubtypeEnum b : SubtypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  @JsonProperty("subtype")
-  private SubtypeEnum subtype;
 
   @JsonProperty("balance")
   private BigDecimal balance;
 
   @JsonProperty("creditLimit")
-  private BigDecimal creditLimit;
+  private JsonNullable<BigDecimal> creditLimit = JsonNullable.undefined();
 
-  @JsonProperty("fees")
-  private BigDecimal fees;
+  @JsonProperty("interestRate")
+  private JsonNullable<BigDecimal> interestRate = JsonNullable.undefined();
+
+  @JsonProperty("owners")
+  @Valid
+  private List<String> owners = null;
+
+  @JsonProperty("authorizedSigners")
+  @Valid
+  private List<String> authorizedSigners = null;
+
+  public FinancialProductRequest productType(String productType) {
+    this.productType = productType;
+    return this;
+  }
+
+  /**
+   * Get productType
+   * @return productType
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getProductType() {
+    return productType;
+  }
+
+  public void setProductType(String productType) {
+    this.productType = productType;
+  }
+
+  public FinancialProductRequest subType(String subType) {
+    this.subType = subType;
+    return this;
+  }
+
+  /**
+   * Get subType
+   * @return subType
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+
+  public String getSubType() {
+    return subType;
+  }
+
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
 
   public FinancialProductRequest clientId(String clientId) {
     this.clientId = clientId;
@@ -131,47 +104,6 @@ public class FinancialProductRequest   {
 
   public void setClientId(String clientId) {
     this.clientId = clientId;
-  }
-
-  public FinancialProductRequest type(TypeEnum type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-  */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-  public FinancialProductRequest subtype(SubtypeEnum subtype) {
-    this.subtype = subtype;
-    return this;
-  }
-
-  /**
-   * Get subtype
-   * @return subtype
-  */
-  @ApiModelProperty(value = "")
-
-
-  public SubtypeEnum getSubtype() {
-    return subtype;
-  }
-
-  public void setSubtype(SubtypeEnum subtype) {
-    this.subtype = subtype;
   }
 
   public FinancialProductRequest balance(BigDecimal balance) {
@@ -197,7 +129,7 @@ public class FinancialProductRequest   {
   }
 
   public FinancialProductRequest creditLimit(BigDecimal creditLimit) {
-    this.creditLimit = creditLimit;
+    this.creditLimit = JsonNullable.of(creditLimit);
     return this;
   }
 
@@ -209,33 +141,89 @@ public class FinancialProductRequest   {
 
   @Valid
 
-  public BigDecimal getCreditLimit() {
+  public JsonNullable<BigDecimal> getCreditLimit() {
     return creditLimit;
   }
 
-  public void setCreditLimit(BigDecimal creditLimit) {
+  public void setCreditLimit(JsonNullable<BigDecimal> creditLimit) {
     this.creditLimit = creditLimit;
   }
 
-  public FinancialProductRequest fees(BigDecimal fees) {
-    this.fees = fees;
+  public FinancialProductRequest interestRate(BigDecimal interestRate) {
+    this.interestRate = JsonNullable.of(interestRate);
     return this;
   }
 
   /**
-   * Get fees
-   * @return fees
+   * Get interestRate
+   * @return interestRate
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public BigDecimal getFees() {
-    return fees;
+  public JsonNullable<BigDecimal> getInterestRate() {
+    return interestRate;
   }
 
-  public void setFees(BigDecimal fees) {
-    this.fees = fees;
+  public void setInterestRate(JsonNullable<BigDecimal> interestRate) {
+    this.interestRate = interestRate;
+  }
+
+  public FinancialProductRequest owners(List<String> owners) {
+    this.owners = owners;
+    return this;
+  }
+
+  public FinancialProductRequest addOwnersItem(String ownersItem) {
+    if (this.owners == null) {
+      this.owners = new ArrayList<>();
+    }
+    this.owners.add(ownersItem);
+    return this;
+  }
+
+  /**
+   * Get owners
+   * @return owners
+  */
+  @ApiModelProperty(value = "")
+
+
+  public List<String> getOwners() {
+    return owners;
+  }
+
+  public void setOwners(List<String> owners) {
+    this.owners = owners;
+  }
+
+  public FinancialProductRequest authorizedSigners(List<String> authorizedSigners) {
+    this.authorizedSigners = authorizedSigners;
+    return this;
+  }
+
+  public FinancialProductRequest addAuthorizedSignersItem(String authorizedSignersItem) {
+    if (this.authorizedSigners == null) {
+      this.authorizedSigners = new ArrayList<>();
+    }
+    this.authorizedSigners.add(authorizedSignersItem);
+    return this;
+  }
+
+  /**
+   * Get authorizedSigners
+   * @return authorizedSigners
+  */
+  @ApiModelProperty(value = "")
+
+
+  public List<String> getAuthorizedSigners() {
+    return authorizedSigners;
+  }
+
+  public void setAuthorizedSigners(List<String> authorizedSigners) {
+    this.authorizedSigners = authorizedSigners;
   }
 
 
@@ -248,17 +236,19 @@ public class FinancialProductRequest   {
       return false;
     }
     FinancialProductRequest financialProductRequest = (FinancialProductRequest) o;
-    return Objects.equals(this.clientId, financialProductRequest.clientId) &&
-        Objects.equals(this.type, financialProductRequest.type) &&
-        Objects.equals(this.subtype, financialProductRequest.subtype) &&
+    return Objects.equals(this.productType, financialProductRequest.productType) &&
+        Objects.equals(this.subType, financialProductRequest.subType) &&
+        Objects.equals(this.clientId, financialProductRequest.clientId) &&
         Objects.equals(this.balance, financialProductRequest.balance) &&
         Objects.equals(this.creditLimit, financialProductRequest.creditLimit) &&
-        Objects.equals(this.fees, financialProductRequest.fees);
+        Objects.equals(this.interestRate, financialProductRequest.interestRate) &&
+        Objects.equals(this.owners, financialProductRequest.owners) &&
+        Objects.equals(this.authorizedSigners, financialProductRequest.authorizedSigners);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientId, type, subtype, balance, creditLimit, fees);
+    return Objects.hash(productType, subType, clientId, balance, creditLimit, interestRate, owners, authorizedSigners);
   }
 
   @Override
@@ -266,12 +256,14 @@ public class FinancialProductRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FinancialProductRequest {\n");
     
+    sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
+    sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    creditLimit: ").append(toIndentedString(creditLimit)).append("\n");
-    sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
+    sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
+    sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
+    sb.append("    authorizedSigners: ").append(toIndentedString(authorizedSigners)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,32 +15,36 @@ import javax.validation.constraints.*;
 /**
  * FinancialProductResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public class FinancialProductResponse   {
   @JsonProperty("id")
   private String id;
 
+  @JsonProperty("productType")
+  private String productType;
+
+  @JsonProperty("subType")
+  private String subType;
+
   @JsonProperty("clientId")
   private String clientId;
-
-  @JsonProperty("type")
-  private String type;
-
-  @JsonProperty("subtype")
-  private String subtype;
 
   @JsonProperty("balance")
   private BigDecimal balance;
 
   @JsonProperty("creditLimit")
-  private BigDecimal creditLimit;
+  private JsonNullable<BigDecimal> creditLimit = JsonNullable.undefined();
 
-  @JsonProperty("fees")
-  private BigDecimal fees;
+  @JsonProperty("interestRate")
+  private JsonNullable<BigDecimal> interestRate = JsonNullable.undefined();
 
-  @JsonProperty("createdAt")
-  @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime createdAt;
+  @JsonProperty("owners")
+  @Valid
+  private List<String> owners = null;
+
+  @JsonProperty("authorizedSigners")
+  @Valid
+  private List<String> authorizedSigners = null;
 
   public FinancialProductResponse id(String id) {
     this.id = id;
@@ -61,6 +66,46 @@ public class FinancialProductResponse   {
     this.id = id;
   }
 
+  public FinancialProductResponse productType(String productType) {
+    this.productType = productType;
+    return this;
+  }
+
+  /**
+   * Get productType
+   * @return productType
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getProductType() {
+    return productType;
+  }
+
+  public void setProductType(String productType) {
+    this.productType = productType;
+  }
+
+  public FinancialProductResponse subType(String subType) {
+    this.subType = subType;
+    return this;
+  }
+
+  /**
+   * Get subType
+   * @return subType
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getSubType() {
+    return subType;
+  }
+
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
+
   public FinancialProductResponse clientId(String clientId) {
     this.clientId = clientId;
     return this;
@@ -79,46 +124,6 @@ public class FinancialProductResponse   {
 
   public void setClientId(String clientId) {
     this.clientId = clientId;
-  }
-
-  public FinancialProductResponse type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public FinancialProductResponse subtype(String subtype) {
-    this.subtype = subtype;
-    return this;
-  }
-
-  /**
-   * Get subtype
-   * @return subtype
-  */
-  @ApiModelProperty(value = "")
-
-
-  public String getSubtype() {
-    return subtype;
-  }
-
-  public void setSubtype(String subtype) {
-    this.subtype = subtype;
   }
 
   public FinancialProductResponse balance(BigDecimal balance) {
@@ -143,7 +148,7 @@ public class FinancialProductResponse   {
   }
 
   public FinancialProductResponse creditLimit(BigDecimal creditLimit) {
-    this.creditLimit = creditLimit;
+    this.creditLimit = JsonNullable.of(creditLimit);
     return this;
   }
 
@@ -155,54 +160,89 @@ public class FinancialProductResponse   {
 
   @Valid
 
-  public BigDecimal getCreditLimit() {
+  public JsonNullable<BigDecimal> getCreditLimit() {
     return creditLimit;
   }
 
-  public void setCreditLimit(BigDecimal creditLimit) {
+  public void setCreditLimit(JsonNullable<BigDecimal> creditLimit) {
     this.creditLimit = creditLimit;
   }
 
-  public FinancialProductResponse fees(BigDecimal fees) {
-    this.fees = fees;
+  public FinancialProductResponse interestRate(BigDecimal interestRate) {
+    this.interestRate = JsonNullable.of(interestRate);
     return this;
   }
 
   /**
-   * Get fees
-   * @return fees
+   * Get interestRate
+   * @return interestRate
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public BigDecimal getFees() {
-    return fees;
+  public JsonNullable<BigDecimal> getInterestRate() {
+    return interestRate;
   }
 
-  public void setFees(BigDecimal fees) {
-    this.fees = fees;
+  public void setInterestRate(JsonNullable<BigDecimal> interestRate) {
+    this.interestRate = interestRate;
   }
 
-  public FinancialProductResponse createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public FinancialProductResponse owners(List<String> owners) {
+    this.owners = owners;
+    return this;
+  }
+
+  public FinancialProductResponse addOwnersItem(String ownersItem) {
+    if (this.owners == null) {
+      this.owners = new ArrayList<>();
+    }
+    this.owners.add(ownersItem);
     return this;
   }
 
   /**
-   * Get createdAt
-   * @return createdAt
+   * Get owners
+   * @return owners
   */
   @ApiModelProperty(value = "")
 
-  @Valid
 
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public List<String> getOwners() {
+    return owners;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setOwners(List<String> owners) {
+    this.owners = owners;
+  }
+
+  public FinancialProductResponse authorizedSigners(List<String> authorizedSigners) {
+    this.authorizedSigners = authorizedSigners;
+    return this;
+  }
+
+  public FinancialProductResponse addAuthorizedSignersItem(String authorizedSignersItem) {
+    if (this.authorizedSigners == null) {
+      this.authorizedSigners = new ArrayList<>();
+    }
+    this.authorizedSigners.add(authorizedSignersItem);
+    return this;
+  }
+
+  /**
+   * Get authorizedSigners
+   * @return authorizedSigners
+  */
+  @ApiModelProperty(value = "")
+
+
+  public List<String> getAuthorizedSigners() {
+    return authorizedSigners;
+  }
+
+  public void setAuthorizedSigners(List<String> authorizedSigners) {
+    this.authorizedSigners = authorizedSigners;
   }
 
 
@@ -216,18 +256,19 @@ public class FinancialProductResponse   {
     }
     FinancialProductResponse financialProductResponse = (FinancialProductResponse) o;
     return Objects.equals(this.id, financialProductResponse.id) &&
+        Objects.equals(this.productType, financialProductResponse.productType) &&
+        Objects.equals(this.subType, financialProductResponse.subType) &&
         Objects.equals(this.clientId, financialProductResponse.clientId) &&
-        Objects.equals(this.type, financialProductResponse.type) &&
-        Objects.equals(this.subtype, financialProductResponse.subtype) &&
         Objects.equals(this.balance, financialProductResponse.balance) &&
         Objects.equals(this.creditLimit, financialProductResponse.creditLimit) &&
-        Objects.equals(this.fees, financialProductResponse.fees) &&
-        Objects.equals(this.createdAt, financialProductResponse.createdAt);
+        Objects.equals(this.interestRate, financialProductResponse.interestRate) &&
+        Objects.equals(this.owners, financialProductResponse.owners) &&
+        Objects.equals(this.authorizedSigners, financialProductResponse.authorizedSigners);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, clientId, type, subtype, balance, creditLimit, fees, createdAt);
+    return Objects.hash(id, productType, subType, clientId, balance, creditLimit, interestRate, owners, authorizedSigners);
   }
 
   @Override
@@ -236,13 +277,14 @@ public class FinancialProductResponse   {
     sb.append("class FinancialProductResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
+    sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    creditLimit: ").append(toIndentedString(creditLimit)).append("\n");
-    sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    interestRate: ").append(toIndentedString(interestRate)).append("\n");
+    sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
+    sb.append("    authorizedSigners: ").append(toIndentedString(authorizedSigners)).append("\n");
     sb.append("}");
     return sb.toString();
   }

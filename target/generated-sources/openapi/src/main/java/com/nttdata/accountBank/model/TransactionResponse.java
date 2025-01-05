@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * TransactionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public class TransactionResponse   {
   @JsonProperty("id")
   private String id;
@@ -28,9 +28,15 @@ public class TransactionResponse   {
   @JsonProperty("amount")
   private BigDecimal amount;
 
-  @JsonProperty("date")
+  @JsonProperty("transactionDate")
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime date;
+  private OffsetDateTime transactionDate;
+
+  @JsonProperty("description")
+  private JsonNullable<String> description = JsonNullable.undefined();
+
+  @JsonProperty("status")
+  private String status;
 
   public TransactionResponse id(String id) {
     this.id = id;
@@ -113,25 +119,65 @@ public class TransactionResponse   {
     this.amount = amount;
   }
 
-  public TransactionResponse date(OffsetDateTime date) {
-    this.date = date;
+  public TransactionResponse transactionDate(OffsetDateTime transactionDate) {
+    this.transactionDate = transactionDate;
     return this;
   }
 
   /**
-   * Get date
-   * @return date
+   * Get transactionDate
+   * @return transactionDate
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public OffsetDateTime getDate() {
-    return date;
+  public OffsetDateTime getTransactionDate() {
+    return transactionDate;
   }
 
-  public void setDate(OffsetDateTime date) {
-    this.date = date;
+  public void setTransactionDate(OffsetDateTime transactionDate) {
+    this.transactionDate = transactionDate;
+  }
+
+  public TransactionResponse description(String description) {
+    this.description = JsonNullable.of(description);
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+  */
+  @ApiModelProperty(value = "")
+
+
+  public JsonNullable<String> getDescription() {
+    return description;
+  }
+
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
+  }
+
+  public TransactionResponse status(String status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -148,12 +194,14 @@ public class TransactionResponse   {
         Objects.equals(this.productId, transactionResponse.productId) &&
         Objects.equals(this.type, transactionResponse.type) &&
         Objects.equals(this.amount, transactionResponse.amount) &&
-        Objects.equals(this.date, transactionResponse.date);
+        Objects.equals(this.transactionDate, transactionResponse.transactionDate) &&
+        Objects.equals(this.description, transactionResponse.description) &&
+        Objects.equals(this.status, transactionResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId, type, amount, date);
+    return Objects.hash(id, productId, type, amount, transactionDate, description, status);
   }
 
   @Override
@@ -165,7 +213,9 @@ public class TransactionResponse   {
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 @Validated
 @Api(value = "transactions", description = "the transactions API")
 public interface TransactionsApi {
@@ -35,7 +35,7 @@ public interface TransactionsApi {
      * @return Transaction created (status code 201)
      *         or Invalid request (status code 400)
      */
-    @ApiOperation(value = "Create a new transaction", nickname = "createTransaction", notes = "", response = TransactionResponse.class, tags={  })
+    @ApiOperation(value = "Create a new transaction", nickname = "createTransaction", notes = "", response = TransactionResponse.class, tags={ "Transaction", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Transaction created", response = TransactionResponse.class),
         @ApiResponse(code = 400, message = "Invalid request", response = ErrorResponse.class) })
@@ -50,12 +50,32 @@ public interface TransactionsApi {
 
 
     /**
+     * DELETE /transactions/{id} : Delete a transaction by ID
+     *
+     * @param id  (required)
+     * @return Transaction deleted (status code 204)
+     *         or Transaction not found (status code 404)
+     */
+    @ApiOperation(value = "Delete a transaction by ID", nickname = "deleteTransaction", notes = "", tags={ "Transaction", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 204, message = "Transaction deleted"),
+        @ApiResponse(code = 404, message = "Transaction not found", response = ErrorResponse.class) })
+    @DeleteMapping(
+        value = "/transactions/{id}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<Void> deleteTransaction(@ApiParam(value = "",required=true) @PathVariable("id") String id) {
+        return getDelegate().deleteTransaction(id);
+    }
+
+
+    /**
      * GET /transactions : Get all transactions
      *
      * @return List of transactions (status code 200)
      *         or Internal server error (status code 500)
      */
-    @ApiOperation(value = "Get all transactions", nickname = "getAllTransactions", notes = "", response = TransactionResponse.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "Get all transactions", nickname = "getAllTransactions", notes = "", response = TransactionResponse.class, responseContainer = "List", tags={ "Transaction", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "List of transactions", response = TransactionResponse.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
@@ -65,6 +85,48 @@ public interface TransactionsApi {
     )
     default ResponseEntity<List<TransactionResponse>> getAllTransactions() {
         return getDelegate().getAllTransactions();
+    }
+
+
+    /**
+     * GET /transactions/{id} : Get a transaction by ID
+     *
+     * @param id  (required)
+     * @return Transaction found (status code 200)
+     *         or Transaction not found (status code 404)
+     */
+    @ApiOperation(value = "Get a transaction by ID", nickname = "getTransactionById", notes = "", response = TransactionResponse.class, tags={ "Transaction", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Transaction found", response = TransactionResponse.class),
+        @ApiResponse(code = 404, message = "Transaction not found", response = ErrorResponse.class) })
+    @GetMapping(
+        value = "/transactions/{id}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<TransactionResponse> getTransactionById(@ApiParam(value = "",required=true) @PathVariable("id") String id) {
+        return getDelegate().getTransactionById(id);
+    }
+
+
+    /**
+     * PUT /transactions/{id} : Update a transaction by ID
+     *
+     * @param id  (required)
+     * @param transactionRequest  (required)
+     * @return Transaction updated (status code 200)
+     *         or Invalid request (status code 400)
+     */
+    @ApiOperation(value = "Update a transaction by ID", nickname = "updateTransaction", notes = "", response = TransactionResponse.class, tags={ "Transaction", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Transaction updated", response = TransactionResponse.class),
+        @ApiResponse(code = 400, message = "Invalid request", response = ErrorResponse.class) })
+    @PutMapping(
+        value = "/transactions/{id}",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<TransactionResponse> updateTransaction(@ApiParam(value = "",required=true) @PathVariable("id") String id,@ApiParam(value = "" ,required=true )  @Valid @RequestBody TransactionRequest transactionRequest) {
+        return getDelegate().updateTransaction(id, transactionRequest);
     }
 
 }

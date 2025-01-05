@@ -18,7 +18,7 @@ import java.util.Optional;
  * A delegate to be called by the {@link ClientsApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-24T11:19:56.527457300-05:00[America/Lima]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-01-05T05:43:09.924039800-05:00[America/Lima]")
 public interface ClientsApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -37,7 +37,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"phone\" : \"phone\", \"name\" : \"name\", \"id\" : \"id\", \"type\" : \"type\", \"email\" : \"email\" }";
+                    String exampleString = "{ \"clientType\" : \"clientType\", \"address\" : \"address\", \"phoneNumber\" : \"phoneNumber\", \"documentType\" : \"documentType\", \"documentNumber\" : \"documentNumber\", \"name\" : \"name\", \"id\" : \"id\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -71,7 +71,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"phone\" : \"phone\", \"name\" : \"name\", \"id\" : \"id\", \"type\" : \"type\", \"email\" : \"email\" }";
+                    String exampleString = "{ \"clientType\" : \"clientType\", \"address\" : \"address\", \"phoneNumber\" : \"phoneNumber\", \"documentType\" : \"documentType\", \"documentNumber\" : \"documentNumber\", \"name\" : \"name\", \"id\" : \"id\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -93,7 +93,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"phone\" : \"phone\", \"name\" : \"name\", \"id\" : \"id\", \"type\" : \"type\", \"email\" : \"email\" }";
+                    String exampleString = "{ \"clientType\" : \"clientType\", \"address\" : \"address\", \"phoneNumber\" : \"phoneNumber\", \"documentType\" : \"documentType\", \"documentNumber\" : \"documentNumber\", \"name\" : \"name\", \"id\" : \"id\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -117,7 +117,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"createdAt\" : \"2000-01-23T04:56:07.000+00:00\", \"phone\" : \"phone\", \"name\" : \"name\", \"id\" : \"id\", \"type\" : \"type\", \"email\" : \"email\" }";
+                    String exampleString = "{ \"clientType\" : \"clientType\", \"address\" : \"address\", \"phoneNumber\" : \"phoneNumber\", \"documentType\" : \"documentType\", \"documentNumber\" : \"documentNumber\", \"name\" : \"name\", \"id\" : \"id\", \"email\" : \"email\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

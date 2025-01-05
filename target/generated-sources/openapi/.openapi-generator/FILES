@@ -2,9 +2,9 @@ src/main/java/com/nttdata/accountBank/api/ApiUtil.java
 src/main/java/com/nttdata/accountBank/api/ClientsApi.java
 src/main/java/com/nttdata/accountBank/api/ClientsApiController.java
 src/main/java/com/nttdata/accountBank/api/ClientsApiDelegate.java
-src/main/java/com/nttdata/accountBank/api/ProductsApi.java
-src/main/java/com/nttdata/accountBank/api/ProductsApiController.java
-src/main/java/com/nttdata/accountBank/api/ProductsApiDelegate.java
+src/main/java/com/nttdata/accountBank/api/FinancialProductsApi.java
+src/main/java/com/nttdata/accountBank/api/FinancialProductsApiController.java
+src/main/java/com/nttdata/accountBank/api/FinancialProductsApiDelegate.java
 src/main/java/com/nttdata/accountBank/api/TransactionsApi.java
 src/main/java/com/nttdata/accountBank/api/TransactionsApiController.java
 src/main/java/com/nttdata/accountBank/api/TransactionsApiDelegate.java

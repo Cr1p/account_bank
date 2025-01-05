@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
-  title: Bank System
-  description: Manage clients, financial products and transactions.
+  title: Financial System API
+  description: API for managing clients, financial products, and transactions.
   version: 1.0.0
 servers:
-  - url: http://localhost:8085
+  - url: http://localhost:8080
     description: Local server
 
 paths:
@@ -12,6 +12,8 @@ paths:
     get:
       summary: Get all clients
       operationId: getAllClients
+      tags:
+        - Client
       responses:
         '200':
           description: List of clients
@@ -30,6 +32,8 @@ paths:
     post:
       summary: Create a new client
       operationId: createClient
+      tags:
+        - Client
       requestBody:
         required: true
         content:
@@ -54,6 +58,8 @@ paths:
     get:
       summary: Get a client by ID
       operationId: getClientById
+      tags:
+        - Client
       parameters:
         - name: id
           in: path
@@ -76,6 +82,8 @@ paths:
     put:
       summary: Update a client by ID
       operationId: updateClient
+      tags:
+        - Client
       parameters:
         - name: id
           in: path
@@ -104,6 +112,8 @@ paths:
     delete:
       summary: Delete a client by ID
       operationId: deleteClient
+      tags:
+        - Client
       parameters:
         - name: id
           in: path
@@ -120,10 +130,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /products:
+  /financial-products:
     get:
       summary: Get all financial products
       operationId: getAllFinancialProducts
+      tags:
+        - FinancialProduct
       responses:
         '200':
           description: List of financial products
@@ -142,6 +154,8 @@ paths:
     post:
       summary: Create a new financial product
       operationId: createFinancialProduct
+      tags:
+        - FinancialProduct
       requestBody:
         required: true
         content:
@@ -162,10 +176,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /products/{id}:
+  /financial-products/{id}:
     get:
       summary: Get a financial product by ID
       operationId: getFinancialProductById
+      tags:
+        - FinancialProduct
       parameters:
         - name: id
           in: path
@@ -188,6 +204,8 @@ paths:
     put:
       summary: Update a financial product by ID
       operationId: updateFinancialProduct
+      tags:
+        - FinancialProduct
       parameters:
         - name: id
           in: path
@@ -216,6 +234,8 @@ paths:
     delete:
       summary: Delete a financial product by ID
       operationId: deleteFinancialProduct
+      tags:
+        - FinancialProduct
       parameters:
         - name: id
           in: path
@@ -236,6 +256,8 @@ paths:
     get:
       summary: Get all transactions
       operationId: getAllTransactions
+      tags:
+        - Transaction
       responses:
         '200':
           description: List of transactions
@@ -254,6 +276,8 @@ paths:
     post:
       summary: Create a new transaction
       operationId: createTransaction
+      tags:
+        - Transaction
       requestBody:
         required: true
         content:
@@ -274,64 +298,159 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+  /transactions/{id}:
+    get:
+      summary: Get a transaction by ID
+      operationId: getTransactionById
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Transaction found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '404':
+          description: Transaction not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a transaction by ID
+      operationId: updateTransaction
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        '200':
+          description: Transaction updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a transaction by ID
+      operationId: deleteTransaction
+      tags:
+        - Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Transaction deleted
+        '404':
+          description: Transaction not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 components:
   schemas:
     ClientRequest:
       type: object
       properties:
+        documentType:
+          type: string
+        documentNumber:
+          type: string
+        clientType:
+          type: string
+          enum: [personal, business]
         name:
           type: string
         email:
           type: string
           format: email
-        phone:
+        address:
           type: string
-        type:
+        phoneNumber:
           type: string
-          enum: [personal, business]
       required:
+        - documentType
+        - documentNumber
+        - clientType
         - name
         - email
-        - type
 
     ClientResponse:
       type: object
       properties:
         id:
           type: string
+        documentType:
+          type: string
+        documentNumber:
+          type: string
+        clientType:
+          type: string
         name:
           type: string
         email:
           type: string
-          format: email
-        phone:
+        address:
           type: string
-        type:
+        phoneNumber:
           type: string
-        createdAt:
-          type: string
-          format: date-time
 
     FinancialProductRequest:
       type: object
       properties:
+        productType:
+          type: string
+        subType:
+          type: string
         clientId:
           type: string
-        type:
-          type: string
-          enum: [account, credit, credit_card]
-        subtype:
-          type: string
-          enum: [savings, checking, fixed-term, personal, business]
         balance:
           type: number
         creditLimit:
           type: number
-        fees:
+          nullable: true
+        interestRate:
           type: number
+          nullable: true
+        owners:
+          type: array
+          items:
+            type: string
+        authorizedSigners:
+          type: array
+          items:
+            type: string
       required:
+        - productType
+        - subType
         - clientId
-        - type
         - balance
 
     FinancialProductResponse:
@@ -339,21 +458,28 @@ components:
       properties:
         id:
           type: string
+        productType:
+          type: string
+        subType:
+          type: string
         clientId:
-          type: string
-        type:
-          type: string
-        subtype:
           type: string
         balance:
           type: number
         creditLimit:
           type: number
-        fees:
+          nullable: true
+        interestRate:
           type: number
-        createdAt:
-          type: string
-          format: date-time
+          nullable: true
+        owners:
+          type: array
+          items:
+            type: string
+        authorizedSigners:
+          type: array
+          items:
+            type: string
 
     TransactionRequest:
       type: object
@@ -365,8 +491,21 @@ components:
           enum: [deposit, withdrawal, payment, purchase]
         amount:
           type: number
+        transactionDate:
+          type: string
+          format: date-time
         description:
           type: string
+          nullable: true
+        status:
+          type: string
+          enum: [completed, pending, failed]
+      required:
+        - productId
+        - type
+        - amount
+        - transactionDate
+        - status
 
     TransactionResponse:
       type: object
@@ -379,9 +518,14 @@ components:
           type: string
         amount:
           type: number
-        date:
+        transactionDate:
           type: string
           format: date-time
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
 
     ErrorResponse:
       type: object
