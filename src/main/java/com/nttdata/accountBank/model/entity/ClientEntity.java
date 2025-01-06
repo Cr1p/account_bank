@@ -16,16 +16,12 @@ public class ClientEntity {
 
     @Id
     private String id;
-    @NotNull
     private String name;
     @NotNull
     private String documentType;
     @NotNull
     private String documentNumber;
-    @NotNull
     private String email;
-    @NotNull
     private String type;
-    @NotNull
     private String phone;
 }

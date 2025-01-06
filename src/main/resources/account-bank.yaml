@@ -399,8 +399,6 @@ components:
         - documentType
         - documentNumber
         - clientType
-        - name
-        - email
 
     ClientResponse:
       type: object
